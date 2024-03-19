@@ -3,24 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <title>Portfolio GOSET Nathan</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="var.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 60px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .dwnld-cv {
+            margin-top: 20px;
+        }
+        .btn-cv {
+            display: inline-block;
+            background-color: var(--dw-bg); /* couleur du fond */
+            color: #fff; /* couleur du texte */
+            padding: 10px 20px; /* espacement interne */
+            border-radius: 5px; /* arrondi des coins */
+            text-decoration: none; /* suppression du soulignage du lien */
+            font-size: 16px; /* taille du texte */
+            transition: background-color 0.3s; /* animation au survol */
+        }
+        .btn-cv:hover {
+            background-color: var(--dw-ho); /* couleur du fond au survol */
+        }
+        .fa-circle-down {
+            margin-right: 5px; /* espacement entre le texte et l'icône */
+        }
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px; /* Réduction du padding pour diminuer la hauteur */
+            background-color: #333;
+            color: #fff;
+            position: fixed; /* Fixe la navbar en haut de la page */
+            top: 0; /* Colle la navbar en haut de la page */
+            width: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 50px;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-right {
+            margin-right: 10px;
+        }
+
+        .navbar a, .navbar img {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px; /* Ajout d'un padding pour créer une "case" */
+            display: block; /* Permet d'appliquer le padding correctement */
+        }
+
+        /* Ajout d'un style spécifique pour les liens pour les différencier des images */
+        .navbar a {
+            background-color: #555; /* Couleur de fond des cases des liens */
+            border-radius: 5px; /* Bordures arrondies pour les cases */
+        }
+
+        .language {
+            cursor: pointer;
+            object-fit: contain;
+            width: 24px; /* Ajustement de la taille des drapeaux si nécessaire */
+            height: 24px;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .language.active {
+            opacity: 1;
+        }
+
+
+        .container {
+            max-width: 1200px; /* Définit une largeur maximale pour le contenu */
+            margin: 0 auto; /* Centre le contenu horizontalement */
+            padding: 20px; /* Ajoute un peu d'espace autour du contenu */
+        }
+
+
+    </style>
 </head>
 <body>
 
-<div>
-    <h1>
-        Hello World
-    </h1>
-    <p>
-        Welcome to my portfolio
-    </p>
+<div class="navbar">
+    <div class="nav-left">
+        <a href="#" data-lang="nav-home">Accueil</a>
+        <a href="#" data-lang="nav-works">Travaux</a>
+        <a href="#" data-lang="nav-certifications">Certifications</a>
+    </div>
+    <div class="nav-right">
+        <a href="cv_Goset_Nathan.pdf" download="cv_Goset_Nathan.pdf" data-lang="nav-cv">CV</a>
+        <img src="assets/fr.png" alt="Français" id="fr" class="language" data-lang="lang-fr">
+        <img src="assets/en.png" alt="English" id="en" class="language" data-lang="lang-en">
+    </div>
 </div>
 
-<div class="dwnld-cv">
-    <button type="button" class="btn-cv">
-        Download my CV (pdf)
-    </button>
+
+<div class="container">
+    <h1 data-lang="title">
+        GOSET Nathan
+    </h1>
+    <p data-lang="welcome">
+        Bienvenue sur mon portfolio !
+    </p>
+
+    <div class="dwnld-cv">
+        <a href="cv_Goset_Nathan.pdf" download="cv_Goset_Nathan.pdf" class="btn-cv" data-lang="download">
+            <i class="fa-solid fa-circle-down"></i> Download my CV (pdf)
+        </a>
+    </div>
+
 </div>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const langElements = document.querySelectorAll("[data-lang]");
+        const langTexts = {
+            'en': {
+                'title': 'GOSET Nathan',
+                'welcome': 'Welcome to my portfolio!',
+                'download': 'Download my CV (pdf)',
+                'nav-home': 'Home',
+                'nav-works': 'Works',
+                'nav-certifications': 'Certifications',
+                'nav-cv': 'Resume',
+                'lang-en': 'English',
+                'lang-fr': 'Français'
+            },
+            'fr': {
+                'title': 'GOSET Nathan',
+                'welcome': 'Bienvenue sur mon portfolio !',
+                'download': 'Téléchargez mon CV (pdf)',
+                'nav-home': 'Accueil',
+                'nav-works': 'Travaux',
+                'nav-certifications': 'Certifications',
+                'nav-cv': 'CV',
+                'lang-en': 'English',
+                'lang-fr': 'Français'
+            }
+        };
+
+        const changeLanguage = (lang) => {
+            langElements.forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (langTexts[lang] && langTexts[lang][key]) {
+                    if(el.tagName === "IMG"){ // Gérer la bordure du drapeau
+                        if(el.id === lang){
+                            el.classList.add('active');
+                        } else {
+                            el.classList.remove('active');
+                        }
+                    } else if(el.classList.contains('btn-cv')){ // Gérer le bouton de téléchargement
+                        el.innerHTML = `<i class="fa-solid fa-circle-down"></i> ${langTexts[lang][key]}`;
+                    } else {
+                        el.textContent = langTexts[lang][key];
+                    }
+                }
+            });
+        };
+
+        document.querySelectorAll('.language').forEach(langSelector => {
+            langSelector.addEventListener('click', () => {
+                changeLanguage(langSelector.id);
+            });
+        });
+
+        // Initialiser avec une langue par défaut
+        changeLanguage('fr');
+    });
+</script>
+
 
 </body>
 </html>
