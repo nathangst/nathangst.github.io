@@ -6,98 +6,28 @@
     <link rel="stylesheet" href="var.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
-            padding-top: 60px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
         }
 
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .dwnld-cv {
-            margin-top: 20px;
-        }
-        .btn-cv {
+        .dwnld-cv > .btn-cv {
             display: inline-block;
-            background-color: var(--dw-bg); /* couleur du fond */
-            color: #fff; /* couleur du texte */
-            padding: 10px 20px; /* espacement interne */
-            border-radius: 5px; /* arrondi des coins */
-            text-decoration: none; /* suppression du soulignage du lien */
-            font-size: 16px; /* taille du texte */
-            transition: background-color 0.3s; /* animation au survol */
+            background-color: var(--dw-bg);
+            color: var(--txt);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
         }
-        .btn-cv:hover {
-            background-color: var(--dw-ho); /* couleur du fond au survol */
+        .dwnld-cv > .btn-cv:hover {
+            background-color: var(--dw-ho);
         }
         .fa-circle-down {
-            margin-right: 5px; /* espacement entre le texte et l'icône */
+            margin-right: 5px;
         }
-
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 10px; /* Réduction du padding pour diminuer la hauteur */
-            background-color: #333;
-            color: #fff;
-            position: fixed; /* Fixe la navbar en haut de la page */
-            top: 0; /* Colle la navbar en haut de la page */
-            width: 100%;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 50px;
-        }
-
-        .nav-left, .nav-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-right {
-            margin-right: 10px;
-        }
-
-        .navbar a, .navbar img {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 5px; /* Ajout d'un padding pour créer une "case" */
-            display: block; /* Permet d'appliquer le padding correctement */
-        }
-
-        /* Ajout d'un style spécifique pour les liens pour les différencier des images */
-        .navbar a {
-            background-color: #555; /* Couleur de fond des cases des liens */
-            border-radius: 5px; /* Bordures arrondies pour les cases */
-        }
-
-        .language {
-            cursor: pointer;
-            object-fit: contain;
-            width: 24px; /* Ajustement de la taille des drapeaux si nécessaire */
-            height: 24px;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-
-        .language.active {
-            opacity: 1;
-        }
-
-
-        .container {
-            max-width: 1200px; /* Définit une largeur maximale pour le contenu */
-            margin: 0 auto; /* Centre le contenu horizontalement */
-            padding: 20px; /* Ajoute un peu d'espace autour du contenu */
-        }
-
 
     </style>
 </head>
@@ -189,7 +119,6 @@
             });
         });
 
-        // Initialiser avec une langue par défaut
         changeLanguage('fr');
     });
 </script>

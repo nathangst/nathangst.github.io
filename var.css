@@ -1,11 +1,97 @@
 
 :root {
-    --b5: #03045E;
+    --b5: #1f2157;
     --b4: #0077B6;
     --b3: #00B4D8;
     --b2: #90E0EF;
     --b1: #CAF0F8;
 
+    --bg: #2f2f2f;
+    --bg-sec: #3f3f3f;
+    --bg-invert: #f8f8f8;
+    --bg-invert-sec: #b4b4b4;
+    --txt: #f8f8f8;
+    --txt-invert: #2f2f2f;
+
     --dw-bg: #28A745;
     --dw-ho: #277A3A;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--txt);
+    background-color: var(--bg);
+    padding-top: 60px;
+}
+
+
+/*  Navbar  */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: var(--b5);
+    color: var(--txt-invert);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 50px;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    margin-right: 10px;
+}
+
+.navbar a {
+    color: var(--txt-invert);
+    background-color: var(--bg-invert);
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: var(--bg-invert-sec);
+}
+
+.navbar img {
+    color : var(--txt-invert);
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px;
+    display: block;
+    border-radius: 5px;
+}
+
+
+.language {
+    cursor: pointer;
+    object-fit: contain;
+    width: 24px; /* Ajustement de la taille des drapeaux si nécessaire */
+    height: 24px;
+    opacity: 0.5;
+    transition: opacity 0.3s, width 0.3s, height 0.3s;
+}
+
+.language:hover {
+    opacity: 0.75;
+}
+
+.language.active {
+    opacity: 1;
+    width: 32px;
+    height: 32px;
 }
