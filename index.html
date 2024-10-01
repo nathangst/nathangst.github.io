@@ -12,8 +12,13 @@
             padding: 15px;
         }
 
-        .dwnld-cv > .btn-cv {
-            display: inline-block;
+        .dwnld-cv {
+            display: flex;
+            justify-content: center;
+            gap: 5px; /* Espace entre les boutons */
+        }
+
+        .btn-cv {
             background-color: var(--dw-bg);
             color: var(--txt);
             padding: 10px 20px;
@@ -21,12 +26,20 @@
             text-decoration: none;
             font-size: 16px;
             transition: background-color 0.3s;
+            flex: 1; /* Les deux boutons prennent une largeur égale */
+            text-align: center; /* Centrer le texte dans le bouton */
         }
-        .dwnld-cv > .btn-cv:hover {
+
+        .btn-cv:hover {
             background-color: var(--dw-ho);
         }
+
         .fa-circle-down {
             margin-right: 5px;
+        }
+
+        .btn-cv:first-child {
+            border-right: 1px solid #fff; /* Bordure entre les boutons */
         }
 
     </style>
@@ -37,10 +50,9 @@
     <div class="nav-left">
         <a href="index.html" data-lang="nav-home">Accueil</a>
         <a href="travaux.html" data-lang="nav-works">Travaux</a>
-        <a href="#" data-lang="nav-certifications">Certifications</a>
+<!--        <a href="#" data-lang="nav-certifications">Certifications</a>-->
     </div>
     <div class="nav-right">
-        <a href="assets/cv_Goset_Nathan.pdf" data-lang="nav-cv">CV</a>
         <img src="assets/fr.png" alt="Français" id="fr" class="language" data-lang="lang-fr">
         <img src="assets/en.png" alt="English" id="en" class="language" data-lang="lang-en">
     </div>
@@ -53,18 +65,26 @@
     <p data-lang="welcome">
         Bienvenue sur mon portfolio !
     </p>
+    <p data-lang="description">
+        Pour me présenter brièvement, je m'appelle Nathan et je viens de Herve.
+        Je fais du volley depuis mon enfance et ça a toujours été une grande part de ma vie.
+        Cela m'a permis de développer mon esprit d'équipe et cette facilité de contact avec les autres.
+        L'informatique a également été fort présent, à travers les jeux vidéos au début, puis via mes études.
+        C'est un milieu qui m'a toujours fort intrigué, par sa complexité mais également par sa diversité.
+    </p>
 
     <div class="dwnld-cv">
-        <a href="assets/cv_Goset_Nathan.pdf" download="cv_Goset_Nathan.pdf" class="btn-cv" data-lang="download">
-            <i class="fa-solid fa-circle-down"></i> Download my CV (pdf)
+        <a href="assets/cv_Goset_Nathan_fr.pdf" download="cv_Goset_Nathan_fr.pdf" class="btn-cv" data-lang="download-fr">
+            <i class="fa-solid fa-circle-down"></i> Télécharger mon CV (FR)
+        </a>
+        <a href="assets/cv_Goset_Nathan_en.pdf" download="cv_Goset_Nathan_en.pdf" class="btn-cv" data-lang="download-en">
+            <i class="fa-solid fa-circle-down"></i> Download my CV (EN)
         </a>
     </div>
-
 
 </div>
 
 <script src="script/lang-switch.js"></script>
-
 
 </body>
 </html>
